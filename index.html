@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101820">
-<title>Cẩm Nang Hải Tặc | Discord RPG</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#101820" name="theme-color"/>
+<title>Cẩm Nang Hải Tặc — ACL Clouds RPG v2</title>
 <style>
 :root{
   --bg:#0b1117;--panel:#121d27;--panel2:#182633;--line:#2a3b49;
@@ -78,300 +78,128 @@ footer{border-top:1px solid var(--line);padding:25px 22px;text-align:center;colo
 </head>
 <body>
 <header>
-  <div class="topbar">
-    <div class="brand"><div class="brand-mark">☠</div><div>CẨM NANG HẢI TẶC<small>Discord RPG • MVP Guide</small></div></div>
-    <nav><a href="#tongquan">Tổng quan</a><a href="#tuong">Tướng</a><a href="#trangbi">Trang bị</a><a href="#battle">Chiến đấu</a><a href="#commands">Lệnh bot</a></nav>
-  </div>
+<div class="topbar">
+<div class="brand"><div class="brand-mark">☠</div><div>CẨM NANG HẢI TẶC<small>Discord RPG • MVP Guide</small></div></div>
+<nav><a href="#tongquan">Tổng quan</a><a href="#tuong">Tướng</a><a href="#trangbi">Trang bị</a><a href="#battle">Chiến đấu</a><a href="#commands">Lệnh bot</a></nav>
+</div>
 </header>
 <main>
-  <div class="hero">
-    <div class="eyebrow">The Grand Line • Player Handbook</div>
-    <h1>Ra khơi và xây dựng<br>đội hình của riêng mày</h1>
-    <p>Cẩm nang hướng dẫn hệ thống, tướng, trang bị, chiến đấu, PvE, PvP và các lệnh của Discord RPG. Nội dung được tổng hợp từ bản thiết kế MVP hiện tại.</p>
-    <div class="meta"><span class="pill">📘 Phiên bản thiết kế MVP</span><span class="pill">🌊 Giao diện tiếng Việt</span><span class="status">⚙ Chưa phải bản phát hành chính thức</span></div>
-  </div>
-  <div class="notice"><strong>Lưu ý quan trọng:</strong> Đây là trang hướng dẫn khung thiết kế. Bot và các tính năng đang trong giai đoạn xây dựng; các chỉ số, tỷ lệ, phần thưởng hoặc lệnh chưa được triển khai có thể còn thay đổi. Những danh sách có nhãn “đề xuất” chưa phải nội dung đã chốt cuối cùng.</div>
-
-  <div class="layout">
-    <aside>
-      <strong>📜 Mục lục</strong>
-      <a href="#tongquan">1. Tổng quan</a><a href="#taikhoan">2. Tài khoản & lưu dữ liệu</a>
-      <a href="#tainguyen">3. Tài nguyên</a><a href="#tuong">4. Tướng & đội hình</a>
-      <a href="#nangcap">5. Cấp độ & đột phá</a><a href="#trangbi">6. Trang bị</a>
-      <a href="#chieumo">7. Chiêu mộ</a><a href="#battle">8. Chiến đấu</a>
-      <a href="#pve">9. PvE</a><a href="#pvp">10. PvP</a>
-      <a href="#nhiemvu">11. Nhiệm vụ & điểm danh</a><a href="#commands">12. Danh sách lệnh</a>
-      <a href="#owner">13. Quyền Owner</a><a href="#quydinh">14. Quy tắc & lưu ý</a>
-    </aside>
-
-    <div>
-      <section id="tongquan">
-        <h2>1. Tổng quan trò chơi</h2>
-        <div class="grid">
-          <div class="card"><h3>⚔️ Lối chơi</h3><p>RPG theo lượt, chiến đấu tự động. Người chơi thu thập tướng, nâng cấp đội hình, trang bị vật phẩm và tham gia PvE/PvP.</p></div>
-          <div class="card"><h3>🧭 Quy mô MVP</h3><p>Đội hình gồm 4 vị trí. Bản thử nghiệm ưu tiên ít hệ thống để dễ vận hành và cân bằng trước khi mở rộng.</p></div>
-          <div class="card"><h3>🌐 Tài khoản toàn cục</h3><p>Mỗi Discord User ID có một tài khoản game duy nhất. Dữ liệu game dùng chung giữa các server Discord.</p></div>
-          <div class="card"><h3>💾 Lưu trữ</h3><p>Dữ liệu dự kiến lưu bằng SQLite: tài khoản, tướng, trang bị, tài nguyên, tiến độ, nhiệm vụ và lịch sử.</p></div>
-        </div>
-      </section>
-
-      <section id="taikhoan">
-        <h2>2. Tài khoản & lưu dữ liệu</h2>
-        <p>Mỗi người chơi có một hồ sơ toàn hệ thống. Việc tham gia nhiều server không tạo thêm tài khoản game.</p>
-        <ul><li>Thông tin hồ sơ, cấp tài khoản và danh hiệu.</li><li>Danh sách tướng, cấp/sao, mảnh tướng và đội hình.</li><li>Trang bị, chỉ số phụ, túi đồ và tài nguyên.</li><li>Tiến độ PvE, xếp hạng/lịch sử PvP, nhiệm vụ và thành tựu.</li></ul>
-        <div class="callout">Thiết kế lưu trữ: dữ liệu vẫn còn sau khi bot khởi động lại. Hệ thống sao lưu database tự động là hạng mục được đề xuất để bảo vệ dữ liệu.</div>
-      </section>
-
-      <section id="tainguyen">
-        <h2>3. Tài nguyên trong game</h2>
-        <div class="table-wrap"><table><thead><tr><th>Tài nguyên</th><th>Công dụng chính</th><th>Ghi chú</th></tr></thead><tbody>
-          <tr><td>🪙 Vàng</td><td>Nâng cấp, đột phá, mua vật phẩm</td><td>Tài nguyên phổ thông</td></tr>
-          <tr><td>💎 Ruby</td><td>Chiêu mộ và vật phẩm đặc biệt</td><td>Nguồn nhận hạn chế hơn</td></tr>
-          <tr><td>🎟 Vé chiêu mộ</td><td>Chiêu mộ tướng</td><td>Dùng thay vàng cho lượt chiêu mộ</td></tr>
-          <tr><td>📚 EXP</td><td>Tăng cấp tướng/tài khoản theo hệ thống tương ứng</td><td>EXP và sách EXP cần phân biệt</td></tr>
-          <tr><td>🧩 Mảnh tướng</td><td>Đột phá tướng</td><td>Dự kiến lưu trong kho riêng</td></tr>
-          <tr><td>⚒ Nguyên liệu</td><td>Đột phá và hoạt động</td><td>Không nằm trong nhóm vô hạn của Owner</td></tr>
-          <tr><td>🏅 Huy hiệu đấu trường</td><td>Mua vật phẩm tại shop PvP</td><td>Kiếm qua hoạt động PvP</td></tr>
-        </tbody></table></div>
-        <p class="muted small">Thể lực chưa sử dụng trong bản thử nghiệm PvE hiện tại.</p>
-      </section>
-
-      <section id="tuong">
-        <h2>4. Tướng & đội hình</h2>
-        <p>Đội hình MVP có 4 vị trí. Mỗi tướng có phẩm chất, chỉ số cơ bản, cấp độ và vai trò chiến đấu.</p>
-        <div class="controls"><input id="heroSearch" type="search" placeholder="Tìm tên tướng..."><select id="heroRarity"><option value="">Tất cả phẩm chất</option><option>N</option><option>R</option><option>SR</option><option>SSR</option><option>UR</option></select></div>
-        <div class="table-wrap"><table id="heroTable"><thead><tr><th>Tướng</th><th>Phẩm chất</th><th>HP</th><th>ATK</th><th>DEF</th><th>SPD</th><th>Ghi chú</th></tr></thead><tbody>
-          <tr data-name="Morgan" data-r="N"><td>Morgan</td><td><span class="tag N">N</span></td><td>1300</td><td>85</td><td>90</td><td>82</td><td>Đề xuất</td></tr>
-          <tr data-name="Alvida" data-r="N"><td>Alvida</td><td><span class="tag N">N</span></td><td>1250</td><td>90</td><td>85</td><td>88</td><td>Đề xuất</td></tr>
-          <tr data-name="Mohji" data-r="N"><td>Mohji</td><td><span class="tag N">N</span></td><td>950</td><td>125</td><td>55</td><td>100</td><td>Đề xuất</td></tr>
-          <tr data-name="Cabaji" data-r="N"><td>Cabaji</td><td><span class="tag N">N</span></td><td>920</td><td>120</td><td>50</td><td>110</td><td>Đề xuất</td></tr>
-          <tr data-name="Koby" data-r="R"><td>Koby</td><td><span class="tag R">R</span></td><td>1050</td><td>105</td><td>65</td><td>105</td><td>Đề xuất</td></tr>
-          <tr data-name="Helmeppo" data-r="R"><td>Helmeppo</td><td><span class="tag R">R</span></td><td>980</td><td>120</td><td>60</td><td>100</td><td>Đề xuất</td></tr>
-          <tr data-name="Jango" data-r="R"><td>Jango</td><td><span class="tag R">R</span></td><td>950</td><td>105</td><td>55</td><td>115</td><td>Đề xuất</td></tr>
-          <tr data-name="Hachi" data-r="R"><td>Hachi</td><td><span class="tag R">R</span></td><td>1250</td><td>95</td><td>80</td><td>90</td><td>Đề xuất</td></tr>
-          <tr data-name="Usopp" data-r="SR"><td>Usopp</td><td><span class="tag SR">SR</span></td><td>980</td><td>145</td><td>55</td><td>108</td><td>Đề xuất</td></tr>
-          <tr data-name="Nami" data-r="SR"><td>Nami</td><td><span class="tag SR">SR</span></td><td>1000</td><td>110</td><td>60</td><td>118</td><td>Đề xuất</td></tr>
-          <tr data-name="Sanji" data-r="SR"><td>Sanji</td><td><span class="tag SR">SR</span></td><td>1050</td><td>140</td><td>65</td><td>112</td><td>Đề xuất</td></tr>
-          <tr data-name="Franky" data-r="SR"><td>Franky</td><td><span class="tag SR">SR</span></td><td>1400</td><td>100</td><td>95</td><td>82</td><td>Đề xuất</td></tr>
-          <tr data-name="Smoker" data-r="SR"><td>Smoker</td><td><span class="tag SR">SR</span></td><td>1200</td><td>125</td><td>75</td><td>95</td><td>Đề xuất</td></tr>
-          <tr data-name="Luffy" data-r="SSR"><td>Luffy</td><td><span class="tag SSR">SSR</span></td><td>1250</td><td>160</td><td>80</td><td>110</td><td>1 kỹ năng riêng</td></tr>
-          <tr data-name="Zoro" data-r="SSR"><td>Zoro</td><td><span class="tag SSR">SSR</span></td><td>1150</td><td>170</td><td>70</td><td>105</td><td>1 kỹ năng riêng</td></tr>
-          <tr data-name="Nico Robin Robin" data-r="SSR"><td>Nico Robin</td><td><span class="tag SSR">SSR</span></td><td>1100</td><td>125</td><td>70</td><td>115</td><td>1 kỹ năng riêng</td></tr>
-          <tr data-name="Ace" data-r="SSR"><td>Ace</td><td><span class="tag SSR">SSR</span></td><td>1050</td><td>175</td><td>65</td><td>112</td><td>1 kỹ năng riêng</td></tr>
-          <tr data-name="Trafalgar Law Law" data-r="SSR"><td>Trafalgar Law</td><td><span class="tag SSR">SSR</span></td><td>1200</td><td>120</td><td>85</td><td>108</td><td>1 kỹ năng riêng</td></tr>
-          <tr data-name="Shanks" data-r="UR"><td>Shanks</td><td><span class="tag UR">UR</span></td><td>1400</td><td>190</td><td>90</td><td>125</td><td>1 kỹ năng riêng</td></tr>
-          <tr data-name="Whitebeard" data-r="UR"><td>Whitebeard</td><td><span class="tag UR">UR</span></td><td>1700</td><td>175</td><td>110</td><td>90</td><td>1 kỹ năng riêng</td></tr>
-        </tbody></table></div>
-        <p class="muted small">Danh sách 20 tướng và chỉ số cấp 1 ở trên là roster mẫu đề xuất cho MVP, chưa phải dữ liệu triển khai cuối cùng. Các chỉ số có thể được cân bằng lại.</p>
-        <h3>Kỹ năng đặc biệt</h3>
-        <ul><li>N, R, SR: chỉ sử dụng đánh thường trong thiết kế hiện tại.</li><li>SSR và UR: mỗi tướng có đúng 1 kỹ năng đặc biệt riêng, cố định theo tướng.</li><li>Kỹ năng dùng cơ chế tích lũy năng lượng; khi đủ năng lượng, tướng tự kích hoạt ở lượt hành động phù hợp.</li></ul>
-      </section>
-
-      <section id="nangcap">
-        <h2>5. Cấp độ & đột phá</h2>
-        <p>Tướng tối đa 5 sao. Sao mở giới hạn cấp; cấp độ tăng HP, ATK và DEF theo phẩm chất. SPD dự kiến giữ nguyên khi lên cấp trong MVP.</p>
-        <div class="table-wrap"><table><thead><tr><th>Phẩm chất</th><th>1★</th><th>2★</th><th>3★</th><th>4★</th><th>5★</th></tr></thead><tbody>
-          <tr><td><span class="tag N">N</span></td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td></tr>
-          <tr><td><span class="tag R">R</span></td><td>20</td><td>30</td><td>40</td><td>50</td><td>60</td></tr>
-          <tr><td><span class="tag SR">SR</span></td><td>30</td><td>40</td><td>50</td><td>60</td><td>70</td></tr>
-          <tr><td><span class="tag SSR">SSR</span></td><td>40</td><td>50</td><td>60</td><td>75</td><td>90</td></tr>
-          <tr><td><span class="tag UR">UR</span></td><td>50</td><td>60</td><td>75</td><td>90</td><td>100</td></tr>
-        </tbody></table></div>
-        <p>Công thức tăng chỉ số dự kiến: chỉ số hiện tại = chỉ số cấp 1 + (cấp hiện tại − 1) × tăng trưởng mỗi cấp.</p>
-        <p>Đột phá sử dụng mảnh tướng và vàng. Khi chiêu mộ trùng tướng đã sở hữu, bản sao được chuyển thành mảnh của tướng đó.</p>
-      </section>
-
-      <section id="trangbi">
-        <h2>6. Trang bị</h2>
-        <p>MVP dùng 1 ô trang bị cho mỗi tướng. Trang bị tăng HP, ATK và DEF; chưa cộng SPD. Mỗi món trang bị có ID riêng và chỉ một tướng có thể sử dụng tại một thời điểm.</p>
-        <div class="controls"><input id="gearSearch" type="search" placeholder="Tìm tên trang bị..."><select id="gearRarity"><option value="">Tất cả phẩm chất</option><option>N</option><option>R</option><option>SR</option><option>SSR</option><option>UR</option></select></div>
-        <div class="table-wrap"><table id="gearTable"><thead><tr><th>Trang bị</th><th>Phẩm chất</th><th>HP</th><th>ATK</th><th>DEF</th></tr></thead><tbody>
-          <tr data-name="Kiếm Gỉ" data-r="N"><td>Kiếm Gỉ</td><td><span class="tag N">N</span></td><td>70</td><td>7</td><td>1</td></tr>
-          <tr data-name="Áo Vải" data-r="N"><td>Áo Vải</td><td><span class="tag N">N</span></td><td>150</td><td>2</td><td>4</td></tr>
-          <tr data-name="Khiên Gỗ" data-r="N"><td>Khiên Gỗ</td><td><span class="tag N">N</span></td><td>100</td><td>2</td><td>5</td></tr>
-          <tr data-name="Nhẫn Đồng" data-r="N"><td>Nhẫn Đồng</td><td><span class="tag N">N</span></td><td>60</td><td>4</td><td>3</td></tr>
-          <tr data-name="Giày Cũ" data-r="N"><td>Giày Cũ</td><td><span class="tag N">N</span></td><td>80</td><td>5</td><td>2</td></tr>
-          <tr data-name="Kiếm Thép" data-r="R"><td>Kiếm Thép</td><td><span class="tag R">R</span></td><td>110</td><td>12</td><td>3</td></tr>
-          <tr data-name="Giáp Da" data-r="R"><td>Giáp Da</td><td><span class="tag R">R</span></td><td>220</td><td>3</td><td>7</td></tr>
-          <tr data-name="Khiên Sắt" data-r="R"><td>Khiên Sắt</td><td><span class="tag R">R</span></td><td>160</td><td>4</td><td>9</td></tr>
-          <tr data-name="Bao Tay Chiến Đấu" data-r="R"><td>Bao Tay Chiến Đấu</td><td><span class="tag R">R</span></td><td>100</td><td>10</td><td>5</td></tr>
-          <tr data-name="Dây Chuyền Biển" data-r="R"><td>Dây Chuyền Biển</td><td><span class="tag R">R</span></td><td>180</td><td>7</td><td>5</td></tr>
-          <tr data-name="Kiếm Hải Tặc" data-r="SR"><td>Kiếm Hải Tặc</td><td><span class="tag SR">SR</span></td><td>170</td><td>20</td><td>5</td></tr>
-          <tr data-name="Giáp Hải Quân" data-r="SR"><td>Giáp Hải Quân</td><td><span class="tag SR">SR</span></td><td>350</td><td>5</td><td>11</td></tr>
-          <tr data-name="Khiên San Hô" data-r="SR"><td>Khiên San Hô</td><td><span class="tag SR">SR</span></td><td>280</td><td>6</td><td>13</td></tr>
-          <tr data-name="Súng Ngắm" data-r="SR"><td>Súng Ngắm</td><td><span class="tag SR">SR</span></td><td>180</td><td>18</td><td>7</td></tr>
-          <tr data-name="Áo Choàng Biển" data-r="SR"><td>Áo Choàng Biển</td><td><span class="tag SR">SR</span></td><td>300</td><td>10</td><td>10</td></tr>
-          <tr data-name="Nhẫn Tinh Tú" data-r="SR"><td>Nhẫn Tinh Tú</td><td><span class="tag SR">SR</span></td><td>220</td><td>15</td><td>7</td></tr>
-          <tr data-name="Ủng Tốc Phong" data-r="SR"><td>Ủng Tốc Phong</td><td><span class="tag SR">SR</span></td><td>200</td><td>14</td><td>8</td></tr>
-          <tr data-name="Kiếm Haki" data-r="SSR"><td>Kiếm Haki</td><td><span class="tag SSR">SSR</span></td><td>230</td><td>30</td><td>8</td></tr>
-          <tr data-name="Giáp Vua Biển" data-r="SSR"><td>Giáp Vua Biển</td><td><span class="tag SSR">SSR</span></td><td>500</td><td>8</td><td>16</td></tr>
-          <tr data-name="Khiên Bất Khuất" data-r="SSR"><td>Khiên Bất Khuất</td><td><span class="tag SSR">SSR</span></td><td>400</td><td>10</td><td>20</td></tr>
-          <tr data-name="Súng Hỏa Diệm" data-r="SSR"><td>Súng Hỏa Diệm</td><td><span class="tag SSR">SSR</span></td><td>250</td><td>28</td><td>9</td></tr>
-          <tr data-name="Áo Choàng Bóng Đêm" data-r="SSR"><td>Áo Choàng Bóng Đêm</td><td><span class="tag SSR">SSR</span></td><td>350</td><td>18</td><td>14</td></tr>
-          <tr data-name="Nhẫn Bá Vương" data-r="SSR"><td>Nhẫn Bá Vương</td><td><span class="tag SSR">SSR</span></td><td>300</td><td>24</td><td>12</td></tr>
-          <tr data-name="Thanh Kiếm Tối Thượng" data-r="UR"><td>Thanh Kiếm Tối Thượng</td><td><span class="tag UR">UR</span></td><td>320</td><td>40</td><td>12</td></tr>
-          <tr data-name="Giáp Rung Chấn" data-r="UR"><td>Giáp Rung Chấn</td><td><span class="tag UR">UR</span></td><td>650</td><td>15</td><td>24</td></tr>
-        </tbody></table></div>
-        <p class="muted small">Danh sách 25 món và chỉ số là dữ liệu mẫu trong bản thiết kế. Chỉ số phụ được đề xuất random khi nhận trang bị. Cường hóa trang bị chưa nằm trong MVP.</p>
-      </section>
-
-      <section id="chieumo">
-        <h2>7. Chiêu mộ tướng</h2>
-        <div class="grid">
-          <div class="card"><h3>Chiêu mộ x1</h3><div class="statline"><span>Bằng vàng</span><strong>10.000</strong></div><div class="statline"><span>Bằng vé</span><strong>1 vé</strong></div></div>
-          <div class="card"><h3>Chiêu mộ x10</h3><div class="statline"><span>Bằng vàng</span><strong>100.000</strong></div><div class="statline"><span>Bằng vé</span><strong>10 vé</strong></div></div>
-        </div>
-        <h3>Tỷ lệ phẩm chất dự kiến</h3>
-        <div class="table-wrap"><table><thead><tr><th>Phẩm chất</th><th>Tỷ lệ</th></tr></thead><tbody><tr><td>N</td><td>40%</td></tr><tr><td>R</td><td>30%</td></tr><tr><td>SR</td><td>20%</td></tr><tr><td>SSR</td><td>9%</td></tr><tr><td>UR</td><td>1%</td></tr></tbody></table></div>
-        <p class="muted small">Tỷ lệ và cơ chế bảo hiểm (pity) đang là thông số thiết kế cần kiểm thử trước khi phát hành. Mỗi tướng trong cùng phẩm chất dự kiến có tỷ lệ xuất hiện ngang nhau.</p>
-      </section>
-
-      <section id="battle">
-        <h2>8. Hệ thống chiến đấu</h2>
-        <ul><li>Chiến đấu tự động theo lượt; thứ tự hành động dự kiến dựa trên SPD.</li><li>Nhật ký chỉ tổng kết theo từng đợt, không ghi từng đòn đánh.</li><li>MVP được tính theo nhiều tiêu chí, không chỉ sát thương gây ra.</li><li>Thắng khi hạ toàn bộ kẻ địch; thua khi cả 4 tướng bị hạ.</li><li>Không có Crit/Dodge trong phiên bản đầu theo thiết kế hiện tại.</li><li>Kỹ năng SSR/UR sử dụng năng lượng tích lũy; mỗi tướng có một kỹ năng riêng.</li></ul>
-        <div class="callout">Quy tắc đã chốt: trận thua PvE không nhận phần thưởng. Chiến đấu hiển thị dạng bảng chữ và bảng kết quả, không cần animation chiến đấu.</div>
-        <p class="muted small">Công thức sát thương, hồi phục giữa các đợt, chọn mục tiêu và thời lượng hiệu ứng vẫn cần hoàn thiện/cân bằng.</p>
-      </section>
-
-      <section id="pve">
-        <h2>9. PvE – ải và chương</h2>
-        <ul><li>Chia thành chương; mỗi chương có nhiều ải và mỗi ải có nhiều đợt quái.</li><li>Thắng ải để mở ải kế tiếp; hoàn thành chương để mở chương sau.</li><li>Cho phép đánh lại ải đã mở.</li><li>Thắng lần đầu mở tính năng đánh nhanh cho ải đó.</li><li>Vàng và EXP dự kiến cố định; nguyên liệu và trang bị có thể rơi ngẫu nhiên.</li><li>Không tiêu hao thể lực trong bản thử nghiệm.</li></ul>
-        <p class="muted small">Cấu trúc số chương/ải/đợt và phần thưởng cụ thể còn là cấu hình thiết kế, có thể điều chỉnh.</p>
-      </section>
-
-      <section id="pvp">
-        <h2>10. PvP – đấu trường</h2>
-        <div class="grid">
-          <div class="card"><h3>🌍 Xếp hạng chung</h3><p>Bảng xếp hạng PvP toàn bot, không chia theo server Discord. Người chơi ở các server khác nhau có thể đối đầu.</p></div>
-          <div class="card"><h3>🛡 Đội hình phòng thủ</h3><p>Người chơi lưu đội hình phòng thủ. PvP dự kiến là chiến đấu bất đồng bộ, không cần hai người online cùng lúc.</p></div>
-          <div class="card"><h3>🎯 Lượt khiêu chiến</h3><p>Đề xuất 5 lượt mỗi ngày, reset theo múi giờ Việt Nam (UTC+7).</p></div>
-          <div class="card"><h3>🏅 Phần thưởng</h3><p>Huy hiệu đấu trường dùng trong shop PvP; phần thưởng mùa dự kiến dựa trên thứ hạng.</p></div>
-        </div>
-        <p class="muted small">Hệ thống Elo, matchmaking, thời lượng mùa và mức thưởng đang ở giai đoạn thiết kế/cân bằng.</p>
-      </section>
-
-      <section id="nhiemvu">
-        <h2>11. Nhiệm vụ, thành tựu & điểm danh</h2>
-        <div class="grid">
-          <div class="card"><h3>📌 Nhiệm vụ tân thủ</h3><p>Chuỗi hướng dẫn người mới: tạo tài khoản, chiêu mộ, lập đội hình, nâng cấp, trang bị, đánh PvE và tham gia PvP.</p></div>
-          <div class="card"><h3>☀ Nhiệm vụ ngày</h3><p>Các mục tiêu lặp lại như chiêu mộ, nâng cấp, thắng PvE, nhận trang bị và tham gia PvP.</p></div>
-          <div class="card"><h3>🗓 Nhiệm vụ tuần</h3><p>Mục tiêu dài hơn, khuyến khích hoạt động và phát triển bộ sưu tập.</p></div>
-          <div class="card"><h3>🏆 Thành tựu & điểm danh</h3><p>Thành tựu theo mốc tiến trình; điểm danh theo chu kỳ 7 ngày và các mốc đăng nhập dài hạn.</p></div>
-        </div>
-        <p class="muted small">Phần thưởng và điều kiện chi tiết sẽ được cập nhật sau khi cân bằng kinh tế.</p>
-      </section>
-
-      <section id="commands">
-        <h2>12. Danh sách lệnh bot</h2>
-        <p>Prefix mặc định là <kbd>!</kbd> và được lưu riêng theo từng server. Có thể đổi bằng <kbd>!prefix [prefix mới]</kbd> hoặc lệnh Slash <kbd>/prefix</kbd>. Dữ liệu game vẫn đồng nhất trên toàn bộ server.</p>
-        <div class="controls"><input id="cmdSearch" type="search" placeholder="Tìm lệnh hoặc chức năng..."><select id="cmdGroup"><option value="">Tất cả nhóm</option><option value="Tài khoản">Tài khoản</option><option value="Tướng">Tướng</option><option value="Trang bị">Trang bị</option><option value="Chiến đấu">Chiến đấu</option><option value="Nhiệm vụ">Nhiệm vụ</option><option value="Báo lỗi">Báo lỗi</option><option value="Quản trị">Quản trị</option><option value="Khác">Khác</option><option value="Thiết kế cũ">Thiết kế cũ</option></select></div>
-        <div class="table-wrap"><table id="cmdTable"><thead><tr><th>Lệnh</th><th>Nhóm</th><th>Công dụng / quyền sử dụng</th></tr></thead><tbody>
-          <tr data-group="Tài khoản"><td class="command">!start</td><td>Tài khoản</td><td>Tạo tài khoản game; hồ sơ được dùng chung ở mọi server.</td></tr>
-          <tr data-group="Tài khoản"><td class="command">!profile</td><td>Tài khoản</td><td>Xem hồ sơ và tài nguyên của bản thân.</td></tr>
-          <tr data-group="Tài khoản"><td class="command">!profile @user</td><td>Tài khoản</td><td>Xem hồ sơ người chơi khác.</td></tr>
-          <tr data-group="Tài khoản"><td class="command">!thongtin</td><td>Tài khoản</td><td>Lệnh thuộc thiết kế cẩm nang cũ; chưa có trong source bản test.</td></tr>
-          <tr data-group="Tài khoản"><td class="command">!capdo</td><td>Tài khoản</td><td>Xem cấp tài khoản — lệnh thuộc thiết kế cũ, chưa triển khai trong bản test.</td></tr>
-          <tr data-group="Tài khoản"><td class="command">!diemdanh</td><td>Tài khoản</td><td>Điểm danh — lệnh thuộc thiết kế cũ, chưa triển khai trong bản test.</td></tr>
-          <tr data-group="Tài khoản"><td class="command">!lichdiemdanh</td><td>Tài khoản</td><td>Xem lịch điểm danh — lệnh thuộc thiết kế cũ, chưa triển khai trong bản test.</td></tr>
-
-          <tr data-group="Tướng"><td class="command">!catalog</td><td>Tướng</td><td>Xem danh mục tướng và mã tướng.</td></tr>
-          <tr data-group="Tướng"><td class="command">!dex</td><td>Tướng</td><td>Bí danh của <kbd>!catalog</kbd>.</td></tr>
-          <tr data-group="Tướng"><td class="command">!recruit</td><td>Tướng</td><td>Chiêu mộ một tướng bằng vé chiêu mộ.</td></tr>
-          <tr data-group="Tướng"><td class="command">!chieu-mo</td><td>Tướng</td><td>Bí danh của <kbd>!recruit</kbd>.</td></tr>
-          <tr data-group="Tướng"><td class="command">!heroes</td><td>Tướng</td><td>Xem danh sách tướng đang sở hữu.</td></tr>
-          <tr data-group="Tướng"><td class="command">!tuong</td><td>Tướng</td><td>Bí danh của <kbd>!heroes</kbd>.</td></tr>
-          <tr data-group="Tướng"><td class="command">!team</td><td>Tướng</td><td>Xem đội hình 4 vị trí hiện tại.</td></tr>
-          <tr data-group="Tướng"><td class="command">!setteam [ô 1-4] [mã_tướng]</td><td>Tướng</td><td>Đặt tướng đã sở hữu vào một vị trí trong đội hình. Ví dụ: <kbd>!setteam 1 luffy</kbd>.</td></tr>
-          <tr data-group="Tướng"><td class="command">!doihinh</td><td>Thiết kế cũ</td><td>Lệnh xem/chỉnh đội hình trong cẩm nang cũ; bản test dùng <kbd>!team</kbd> và <kbd>!setteam</kbd>.</td></tr>
-          <tr data-group="Tướng"><td class="command">!nangcap</td><td>Thiết kế cũ</td><td>Nâng cấp tướng — chưa triển khai trong source bản test.</td></tr>
-          <tr data-group="Tướng"><td class="command">!dotpha</td><td>Thiết kế cũ</td><td>Đột phá tướng — chưa triển khai trong source bản test.</td></tr>
-
-          <tr data-group="Trang bị"><td class="command">!items</td><td>Trang bị</td><td>Xem túi trang bị đang sở hữu.</td></tr>
-          <tr data-group="Trang bị"><td class="command">!catalog-items</td><td>Trang bị</td><td>Xem danh mục và mã trang bị.</td></tr>
-          <tr data-group="Trang bị"><td class="command">!claim-items</td><td>Trang bị</td><td>Nhận mỗi loại một món trang bị mẫu để thử nghiệm.</td></tr>
-          <tr data-group="Trang bị"><td class="command">!equip [mã_tướng] [mã_trang_bị]</td><td>Trang bị</td><td>Gắn trang bị cho tướng. Ví dụ: <kbd>!equip luffy iron_sword</kbd>.</td></tr>
-          <tr data-group="Trang bị"><td class="command">!tui</td><td>Thiết kế cũ</td><td>Lệnh xem túi đồ trong cẩm nang cũ; bản test dùng <kbd>!items</kbd>.</td></tr>
-          <tr data-group="Trang bị"><td class="command">!trangbi</td><td>Thiết kế cũ</td><td>Lệnh quản lý trang bị trong cẩm nang cũ; bản test dùng <kbd>!catalog-items</kbd>, <kbd>!items</kbd> và <kbd>!equip</kbd>.</td></tr>
-
-          <tr data-group="Chiến đấu"><td class="command">!battle</td><td>Chiến đấu</td><td>Bắt đầu trận chiến tự động thử nghiệm. Thất bại không nhận thưởng.</td></tr>
-          <tr data-group="Chiến đấu"><td class="command">!pve</td><td>Thiết kế cũ</td><td>Xem/chọn ải PvE — chưa triển khai trong source bản test.</td></tr>
-          <tr data-group="Chiến đấu"><td class="command">!danhai</td><td>Thiết kế cũ</td><td>Vào trận PvE theo ải — chưa triển khai trong source bản test.</td></tr>
-          <tr data-group="Chiến đấu"><td class="command">!danhnhanh</td><td>Thiết kế cũ</td><td>Đánh nhanh ải — chưa triển khai trong source bản test.</td></tr>
-          <tr data-group="Chiến đấu"><td class="command">!pvp</td><td>Thiết kế cũ</td><td>Mở đấu trường PvP — chưa triển khai trong source bản test.</td></tr>
-          <tr data-group="Chiến đấu"><td class="command">!top pvp</td><td>Thiết kế cũ</td><td>Xem bảng xếp hạng PvP — chưa triển khai trong source bản test.</td></tr>
-
-          <tr data-group="Báo lỗi"><td class="command">!bug-report [mô tả]</td><td>Báo lỗi</td><td>Gửi báo cáo lỗi đến DM của Owner. Ví dụ: <kbd>!bug-report Tôi bị mất trang bị</kbd>.</td></tr>
-          <tr data-group="Báo lỗi"><td class="command">!bug [mô tả]</td><td>Báo lỗi</td><td>Bí danh của <kbd>!bug-report</kbd>.</td></tr>
-          <tr data-group="Báo lỗi"><td class="command">!bug-reply BUG-000001 [nội dung]</td><td>Báo lỗi</td><td><strong>Chỉ Owner:</strong> phản hồi trực tiếp báo cáo lỗi và gửi DM cho người chơi.</td></tr>
-          <tr data-group="Báo lỗi"><td class="command">reply BUG-000001 [nội dung]</td><td>Báo lỗi</td><td>Người chơi gửi tin nhắn trả lời lại Owner trong DM riêng với bot.</td></tr>
-          <tr data-group="Báo lỗi"><td class="command">!bug-close BUG-000001</td><td>Báo lỗi</td><td><strong>Chỉ Owner:</strong> đóng báo cáo lỗi.</td></tr>
-
-          <tr data-group="Quản trị"><td class="command">!give @user [gold|ruby|exp|ticket] [số_lượng]</td><td>Quản trị</td><td><strong>Chỉ Owner:</strong> cộng vàng, Ruby, EXP hoặc vé chiêu mộ cho người chơi.</td></tr>
-          <tr data-group="Quản trị"><td class="command">!prefix [prefix mới]</td><td>Quản trị</td><td>Người có quyền Administrator đổi prefix riêng cho server hiện tại. Ví dụ: <kbd>!prefix $</kbd>.</td></tr>
-          <tr data-group="Quản trị"><td class="command">/prefix</td><td>Quản trị</td><td>Slash Command đổi prefix riêng cho server hiện tại; cần quyền Administrator.</td></tr>
-
-          <tr data-group="Khác"><td class="command">!ping</td><td>Khác</td><td>Kiểm tra độ trễ và hiển thị bot.</td></tr>
-          <tr data-group="Khác"><td class="command">!help</td><td>Khác</td><td>Hiển thị danh sách lệnh đang có trong bản test.</td></tr>
-          <tr data-group="Khác"><td class="command">!botinfo</td><td>Khác</td><td>Xem thông tin bot, phiên bản thử nghiệm, uptime và prefix server hiện tại.</td></tr>
-
-          <tr data-group="Thiết kế cũ"><td class="command">!help pvp</td><td>Thiết kế cũ</td><td>Hướng dẫn PvP theo cẩm nang cũ; chưa có trong source bản test.</td></tr>
-          <tr data-group="Thiết kế cũ"><td class="command">!nhiemvu</td><td>Thiết kế cũ</td><td>Xem nhiệm vụ ngày — chưa triển khai.</td></tr>
-          <tr data-group="Thiết kế cũ"><td class="command">!nhiemvu tuan</td><td>Thiết kế cũ</td><td>Xem nhiệm vụ tuần — chưa triển khai.</td></tr>
-          <tr data-group="Thiết kế cũ"><td class="command">!nhiemvu tanthu</td><td>Thiết kế cũ</td><td>Xem nhiệm vụ tân thủ — chưa triển khai.</td></tr>
-          <tr data-group="Thiết kế cũ"><td class="command">!thanhtuu</td><td>Thiết kế cũ</td><td>Xem thành tựu — chưa triển khai.</td></tr>
-          <tr data-group="Thiết kế cũ"><td class="command">!nhanthanhthuong</td><td>Thiết kế cũ</td><td>Nhận phần thưởng — chưa triển khai.</td></tr>
-          <tr data-group="Thiết kế cũ"><td class="command">!top</td><td>Thiết kế cũ</td><td>Xem bảng xếp hạng tổng hợp — chưa triển khai.</td></tr>
-          <tr data-group="Thiết kế cũ"><td class="command">!top capdo</td><td>Thiết kế cũ</td><td>Xếp hạng cấp tài khoản — chưa triển khai.</td></tr>
-          <tr data-group="Thiết kế cũ"><td class="command">!top lucchien</td><td>Thiết kế cũ</td><td>Xếp hạng lực chiến — chưa triển khai.</td></tr>
-          <tr data-group="Thiết kế cũ"><td class="command">!top pve</td><td>Thiết kế cũ</td><td>Xếp hạng tiến độ PvE — chưa triển khai.</td></tr>
-          <tr data-group="Thiết kế cũ"><td class="command">!top suu-tam</td><td>Thiết kế cũ</td><td>Xếp hạng sưu tầm tướng — chưa triển khai.</td></tr>
-        </tbody></table></div>
-        <p class="muted small">Lưu ý: “Lệnh có trong bản test” là các lệnh đã được viết trong source thử nghiệm hiện tại. “Thiết kế cũ/chưa triển khai” là lệnh từng có trong cẩm nang thiết kế, được giữ lại để theo dõi nhưng chưa thể sử dụng. Lệnh Slash hiện chỉ có <kbd>/prefix</kbd>.</p>
-      </section>
-
-      <section id="owner">
-        <h2>13. Quyền Owner</h2>
-        <div class="card">
-          <h3>👑 Quyền quản trị độc quyền</h3>
-          <p>Chỉ Discord User ID được cấu hình làm Owner mới có quyền sử dụng lệnh quản trị. Quyền Administrator của server Discord không tự động cấp quyền Owner trong game.</p>
-          <h3>Tài nguyên vô hạn của Owner</h3>
-          <div class="statline"><span>Vàng</span><strong>∞</strong></div>
-          <div class="statline"><span>Ruby</span><strong>∞</strong></div>
-          <div class="statline"><span>EXP</span><strong>∞</strong></div>
-          <div class="statline"><span>Vé chiêu mộ</span><strong>∞</strong></div>
-          <p class="muted small">Chỉ đúng 4 loại trên. Mảnh tướng, nguyên liệu, huy hiệu đấu trường, trang bị và vật phẩm khác không tự động vô hạn. EXP vô hạn không đồng nghĩa tướng tự động lên cấp tối đa.</p>
-        </div>
-      </section>
-
-      <section id="quydinh">
-        <h2>14. Quy tắc & lưu ý</h2>
-        <ul><li>Mỗi người dùng Discord chỉ có một tài khoản game trên toàn hệ thống.</li><li>Prefix và cấu hình bot có thể riêng theo từng server; dữ liệu game là toàn cục.</li><li>PvP sử dụng bảng xếp hạng chung, cho phép người chơi khác server đối đầu.</li><li>Thất bại PvE không nhận phần thưởng.</li><li>Trang bị đang được tướng sử dụng không thể bán/hủy; có thể tháo và chuyển cho tướng khác theo quy tắc túi đồ.</li><li>Chỉ Owner được phép dùng lệnh quản trị.</li></ul>
-        <div class="callout warn"><strong>Về bản quyền:</strong> Tên nhân vật và một số kỹ năng trong danh sách là nội dung tham khảo từ tác phẩm One Piece. Đây là dự án bot do người hâm mộ thiết kế, không đại diện hay được xác nhận là sản phẩm chính thức.</div>
-      </section>
-    </div>
-  </div>
-</main>
-<footer>
-  CẨM NANG HẢI TẶC • Discord RPG MVP<br>
-  Tài liệu thiết kế nội bộ chuyển thành trang hướng dẫn tĩnh. Cập nhật nội dung khi tính năng được chốt và triển khai.
-</footer>
-<script>
-function filterTable(inputId, selectId, tableId, nameAttr, rarityAttr, groupAttr){
-  const input=document.getElementById(inputId), select=document.getElementById(selectId);
-  const rows=[...document.querySelectorAll(`#${tableId} tbody tr`)];
-  function run(){
-    const q=(input?.value||'').toLocaleLowerCase('vi').trim(), f=select?.value||'';
-    rows.forEach(row=>{
-      const name=(row.getAttribute(nameAttr)||row.innerText).toLocaleLowerCase('vi');
-      const attr=rarityAttr?row.getAttribute(rarityAttr):row.getAttribute(groupAttr);
-      row.classList.toggle('hidden',!(name.includes(q)&&(!f||attr===f)));
-    });
-  }
-  input?.addEventListener('input',run);select?.addEventListener('change',run);
-}
-filterTable('heroSearch','heroRarity','heroTable','data-name','data-r');
-filterTable('gearSearch','gearRarity','gearTable','data-name','data-r');
-filterTable('cmdSearch','cmdGroup','cmdTable',null,null,'data-group');
-</script>
-</body>
-</html>
+<div class="hero">
+<div class="eyebrow">The Grand Line • Player Handbook</div>
+<h1>Ra khơi và xây dựng<br/>đội hình của riêng mày</h1>
+<p>Cẩm nang hướng dẫn hệ thống, tướng, trang bị, chiến đấu, PvE, PvP và các lệnh của Discord RPG. Nội dung được tổng hợp từ bản thiết kế MVP hiện tại.</p>
+<div class="meta"><span class="pill">📘 Phiên bản thiết kế MVP</span><span class="pill">🌊 Giao diện tiếng Việt</span><span class="status">⚙ Chưa phải bản phát hành chính thức</span></div>
+</div>
+<div class="notice"><strong>Phiên bản v2 — tài liệu thiết kế và hướng dẫn thử nghiệm.</strong> Những lệnh được liệt kê trong bảng lệnh là lệnh có trong source v2. Một số con số cân bằng vẫn là mặc định thử nghiệm; xem ghi chú ở cuối từng mục.</div>
+<div class="layout">
+<aside>
+<strong>📜 Mục lục</strong>
+<a href="#tongquan">1. Tổng quan</a><a href="#taikhoan">2. Tài khoản &amp; lưu dữ liệu</a>
+<a href="#tainguyen">3. Tài nguyên</a><a href="#tuong">4. Tướng &amp; đội hình</a>
+<a href="#nangcap">5. Cấp độ &amp; đột phá</a><a href="#trangbi">6. Trang bị</a>
+<a href="#chieumo">7. Chiêu mộ</a><a href="#battle">8. Chiến đấu</a>
+<a href="#pve">9. PvE</a><a href="#pvp">10. PvP</a>
+<a href="#nhiemvu">11. Nhiệm vụ &amp; điểm danh</a><a href="#commands">12. Danh sách lệnh</a>
+<a href="#owner">13. Quyền Owner</a><a href="#quydinh">14. Quy tắc &amp; lưu ý</a>
+</aside>
+<div>
+<section id="tongquan">
+<h2>1. Tổng quan trò chơi</h2>
+<div class="grid">
+<div class="card"><h3>⚔️ Lối chơi</h3><p>RPG chiến đấu tự động. Thu thập tướng, nâng cấp, đột phá, nâng sao, gắn trang bị và tham gia PvE/PvP.</p></div>
+<div class="card"><h3>🧭 Quy mô bản thử nghiệm</h3><p>20 tướng • 25 trang bị • đội hình 4 vị trí • 30 ải PvE • PvP 4 vs 4.</p></div>
+<div class="card"><h3>🌍 Dữ liệu toàn cục</h3><p>Mỗi Discord User ID chỉ có một tài khoản game, dùng chung ở mọi server. Prefix vẫn được cài riêng theo từng server.</p></div>
+<div class="card"><h3>💾 Lưu trữ</h3><p>SQLite WAL, database mới <code>pirate_rpg_v2.sqlite3</code>, có phiên bản schema. Database cũ không bị xóa hoặc ghi đè.</p></div>
+</div>
+<div class="callout">Mục tiêu bản MVP là giữ hệ thống gọn, dễ kiểm thử và dễ cân bằng. Không có bản đồ thế giới hay nhiều lớp đội hình; chiến đấu dùng 4 vị trí cố định.</div>
+</section>
+<section id="taikhoan">
+<h2>2. Tài khoản &amp; lưu dữ liệu</h2>
+<ul><li>Tài khoản được định danh bằng Discord User ID và dùng chung trên toàn bộ server.</li><li>Người chơi tạo tài khoản bằng <code>!start</code>; nhận Luffy, 1.000 vàng, 100 Ruby và 5 vé chiêu mộ.</li><li>Prefix mặc định là <code>!</code>; quản trị viên server có thể đổi riêng bằng <code>!prefix</code> hoặc <code>/prefix</code>.</li><li>Dữ liệu game không phụ thuộc server nơi người chơi sử dụng lệnh.</li><li>Bot v2 sử dụng database riêng <code>pirate_rpg_v2.sqlite3</code>; không tự động di chuyển hoặc xóa database cũ.</li></ul>
+<div class="callout warn">Không đăng token bot vào chat hoặc tài liệu công khai. Cấu hình token và Owner ID trong Environment Variables của ACL Clouds.</div>
+</section>
+<section id="tainguyen">
+<h2>3. Tài nguyên trong game</h2>
+<div class="grid">
+<div class="card"><h3>🪙 Vàng</h3><p>Dùng để nâng cấp tướng, đột phá, nâng sao và cường hóa trang bị.</p></div>
+<div class="card"><h3>💎 Ruby</h3><p>Tài nguyên cao cấp; các nguồn tiêu Ruby sẽ được bổ sung sau khi chốt kinh tế.</p></div>
+<div class="card"><h3>⭐ EXP</h3><p>Dùng trong quá trình phát triển tài khoản và nâng cấp tướng theo cấu hình MVP.</p></div>
+<div class="card"><h3>🎟️ Vé chiêu mộ</h3><p>Dùng cho chiêu mộ x1 hoặc x10.</p></div>
+</div>
+<p>Owner bot có vô hạn đúng 4 loại: vàng, Ruby, EXP và vé chiêu mộ. Trang bị, bản sao tướng và các vật phẩm khác không vô hạn.</p>
+</section>
+<section id="tuong">
+<h2>4. Tướng &amp; đội hình</h2>
+<p>Roster thử nghiệm gồm 20 nhân vật. Mỗi tướng có phẩm chất, vai trò và bộ chỉ số riêng.</p>
+<div class="controls"><input id="heroSearch" placeholder="Tìm tên hoặc mã tướng..." type="search"/><select id="heroRarity"><option value="">Tất cả phẩm chất</option><option value="R">R</option><option value="SR">SR</option><option value="SSR">SSR</option><option value="UR">UR</option></select></div>
+<div class="table-wrap"><table id="heroTable"><thead><tr><th>Tướng</th><th>Mã</th><th>Phẩm chất</th><th>Vai trò</th></tr></thead><tbody>
+<tr data-name="Monkey D. Luffy" data-r="SSR"><td>Monkey D. Luffy</td><td>luffy</td><td>SSR</td><td>Đấu sĩ</td></tr>
+<tr data-name="Roronoa Zoro" data-r="SSR"><td>Roronoa Zoro</td><td>zoro</td><td>SSR</td><td>Sát thương</td></tr>
+<tr data-name="Nami" data-r="SR"><td>Nami</td><td>nami</td><td>SR</td><td>Hỗ trợ</td></tr>
+<tr data-name="Usopp" data-r="R"><td>Usopp</td><td>usopp</td><td>R</td><td>Xạ thủ</td></tr>
+<tr data-name="Vinsmoke Sanji" data-r="SSR"><td>Vinsmoke Sanji</td><td>sanji</td><td>SSR</td><td>Đấu sĩ</td></tr>
+<tr data-name="Tony Tony Chopper" data-r="SR"><td>Tony Tony Chopper</td><td>chopper</td><td>SR</td><td>Hồi phục</td></tr>
+<tr data-name="Nico Robin" data-r="SR"><td>Nico Robin</td><td>robin</td><td>SR</td><td>Khống chế</td></tr>
+<tr data-name="Franky" data-r="SR"><td>Franky</td><td>franky</td><td>SR</td><td>Đỡ đòn</td></tr>
+<tr data-name="Brook" data-r="SR"><td>Brook</td><td>brook</td><td>SR</td><td>Sát thương</td></tr>
+<tr data-name="Jinbe" data-r="SSR"><td>Jinbe</td><td>jinbe</td><td>SSR</td><td>Đỡ đòn</td></tr>
+<tr data-name="Portgas D. Ace" data-r="SSR"><td>Portgas D. Ace</td><td>ace</td><td>SSR</td><td>Sát thương</td></tr>
+<tr data-name="Sabo" data-r="SSR"><td>Sabo</td><td>sabo</td><td>SSR</td><td>Sát thương</td></tr>
+<tr data-name="Trafalgar Law" data-r="SSR"><td>Trafalgar Law</td><td>law</td><td>SSR</td><td>Hỗ trợ</td></tr>
+<tr data-name="Shanks" data-r="UR"><td>Shanks</td><td>shanks</td><td>UR</td><td>Sát thương</td></tr>
+<tr data-name="Dracule Mihawk" data-r="SSR"><td>Dracule Mihawk</td><td>mihawk</td><td>SSR</td><td>Sát thương</td></tr>
+<tr data-name="Boa Hancock" data-r="SSR"><td>Boa Hancock</td><td>hancock</td><td>SSR</td><td>Khống chế</td></tr>
+<tr data-name="Crocodile" data-r="SR"><td>Crocodile</td><td>crocodile</td><td>SR</td><td>Khống chế</td></tr>
+<tr data-name="Donquixote Doflamingo" data-r="SSR"><td>Donquixote Doflamingo</td><td>doflamingo</td><td>SSR</td><td>Khống chế</td></tr>
+<tr data-name="Charlotte Katakuri" data-r="SSR"><td>Charlotte Katakuri</td><td>katakuri</td><td>SSR</td><td>Đấu sĩ</td></tr>
+<tr data-name="Kaido" data-r="UR"><td>Kaido</td><td>kaido</td><td>UR</td><td>Đỡ đòn</td></tr>
+</tbody></table></div>
+<p>Đội hình có đúng 4 vị trí. Một tướng không thể chiếm hai vị trí trong cùng đội hình. Dùng <code>!team</code> để xem và <code>!setteam &lt;vị trí&gt; &lt;ID tướng&gt;</code> để sắp xếp.</p>
+</section>
+<section id="nangcap">
+<h2>5. Cấp độ, đột phá &amp; nâng sao</h2>
+<div class="table-wrap"><table><thead><tr><th>Phẩm chất</th><th>Cấp tối đa</th><th>Sao tối đa</th><th>Bản sao cho mỗi lần nâng sao</th></tr></thead><tbody>
+<tr><td>R</td><td>40</td><td>3★</td><td>1</td></tr><tr><td>SR</td><td>60</td><td>4★</td><td>1</td></tr><tr><td>SSR</td><td>80</td><td>5★</td><td>2</td></tr><tr><td>UR</td><td>100</td><td>6★</td><td>3</td></tr>
+</tbody></table></div>
+<ul><li>Chỉ tướng phẩm chất cao mới đạt cấp tối đa cao hơn.</li><li>Đột phá tại cấp 10, 20, 30... để mở khóa 10 cấp tiếp theo; cần vàng và 1 bản sao trùng chính xác tướng.</li><li>Nâng sao độc lập với cấp độ; cần vàng và số bản sao theo phẩm chất.</li><li>Mỗi sao tăng 5% chỉ số gốc của tướng. Trang bị không được nhân theo hệ số sao.</li><li>Dùng <code>!levelup &lt;ID tướng&gt; [số cấp]</code>, <code>!ascend &lt;ID tướng&gt;</code> và <code>!starup &lt;ID tướng&gt;</code>.</li></ul>
+<p class="muted small">Các mốc cấp tối đa theo phẩm chất và chi phí nâng cấp/đột phá hiện là mặc định thử nghiệm, có thể điều chỉnh sau khi chạy test.</p>
+</section>
+<section id="trangbi">
+<h2>6. Trang bị</h2>
+<ul><li>Danh mục có 25 món, chia 5 phẩm chất: Common, Good, Rare, Epic và Legendary.</li><li>Mỗi tướng chỉ có <strong>1 ô trang bị</strong> trong giai đoạn thử nghiệm.</li><li>Mỗi món đồ là một vật phẩm riêng, không thể cùng lúc gắn cho hai tướng. Có thể tháo hoặc chuyển sang tướng khác.</li><li>Trang bị có thể tăng HP, ATK và DEF. Phẩm chất tướng không giới hạn phẩm chất trang bị.</li><li>Cường hóa từ +0 đến +15; mỗi cấp tăng 4% chỉ số gốc của món đồ; không có tỷ lệ thất bại.</li><li>Trang bị có thể được bổ sung qua PvE, nhiệm vụ và cửa hàng khi các hệ thống đó được triển khai.</li></ul>
+<div class="controls"><input id="gearSearch" placeholder="Tìm tên hoặc mã trang bị..." type="search"/><select id="gearRarity"><option value="">Tất cả phẩm chất</option><option value="Common">Common</option><option value="Good">Good</option><option value="Rare">Rare</option><option value="Epic">Epic</option><option value="Legendary">Legendary</option></select></div>
+<div class="table-wrap"><table id="gearTable"><thead><tr><th>Trang bị</th><th>Mã</th><th>Phẩm chất</th><th>HP</th><th>ATK</th><th>DEF</th></tr></thead><tbody><tr data-name="Kiếm Gỗ" data-r="Common"><td>Kiếm Gỗ</td><td>dao_go</td><td>Common</td><td>0</td><td>20</td><td>0</td></tr>
+<tr data-name="Súng Flintlock" data-r="Common"><td>Súng Flintlock</td><td>sung_flint</td><td>Common</td><td>0</td><td>25</td><td>0</td></tr>
+<tr data-name="Thắt Lưng Da" data-r="Common"><td>Thắt Lưng Da</td><td>that_lung</td><td>Common</td><td>20</td><td>5</td><td>8</td></tr>
+<tr data-name="Khiên Gỗ" data-r="Common"><td>Khiên Gỗ</td><td>khien_go</td><td>Common</td><td>35</td><td>0</td><td>18</td></tr>
+<tr data-name="Áo Choàng Hải Tặc" data-r="Common"><td>Áo Choàng Hải Tặc</td><td>ao_choang</td><td>Common</td><td>45</td><td>0</td><td>12</td></tr>
+<tr data-name="Gậy Bạc" data-r="Common"><td>Gậy Bạc</td><td>gay_bac</td><td>Common</td><td>0</td><td>18</td><td>5</td></tr>
+<tr data-name="Giày Hải Tặc" data-r="Common"><td>Giày Hải Tặc</td><td>giay_hai_tac</td><td>Common</td><td>15</td><td>8</td><td>5</td></tr>
+<tr data-name="Đao Thượng Hạng" data-r="Good"><td>Đao Thượng Hạng</td><td>dao_thuong</td><td>Good</td><td>0</td><td>38</td><td>8</td></tr>
+<tr data-name="Giáp Sắt" data-r="Good"><td>Giáp Sắt</td><td>giap_sat</td><td>Good</td><td>60</td><td>0</td><td>35</td></tr>
+<tr data-name="Mũ Rơm" data-r="Good"><td>Mũ Rơm</td><td>mu_rom</td><td>Good</td><td>25</td><td>10</td><td>12</td></tr>
+<tr data-name="Vòng Cổ Ngọc" data-r="Good"><td>Vòng Cổ Ngọc</td><td>vong_co</td><td>Good</td><td>30</td><td>12</td><td>8</td></tr>
+<tr data-name="Giày Tốc Độ" data-r="Good"><td>Giày Tốc Độ</td><td>giay_toc_do</td><td>Good</td><td>15</td><td>15</td><td>5</td></tr>
+<tr data-name="Áo Giáp Nhẹ" data-r="Good"><td>Áo Giáp Nhẹ</td><td>ao_giap_nhe</td><td>Good</td><td>75</td><td>0</td><td>28</td></tr>
+<tr data-name="Kiếm Băng" data-r="Rare"><td>Kiếm Băng</td><td>kiem_bang</td><td>Rare</td><td>0</td><td>48</td><td>12</td></tr>
+<tr data-name="Thương Sắt" data-r="Rare"><td>Thương Sắt</td><td>thuong_sat</td><td>Rare</td><td>0</td><td>42</td><td>15</td></tr>
+<tr data-name="Nhẫn Vàng" data-r="Rare"><td>Nhẫn Vàng</td><td>nhan_vang</td><td>Rare</td><td>35</td><td>20</td><td>8</td></tr>
+<tr data-name="Găng Tay Chiến Đấu" data-r="Rare"><td>Găng Tay Chiến Đấu</td><td>gang_tay</td><td>Rare</td><td>10</td><td>28</td><td>5</td></tr>
+<tr data-name="Nhẫn Biển" data-r="Rare"><td>Nhẫn Biển</td><td>nhan_bien</td><td>Rare</td><td>40</td><td>12</td><td>25</td></tr>
+<tr data-name="Giáp Hải Quân" data-r="Epic"><td>Giáp Hải Quân</td><td>giap_bien</td><td>Epic</td><td>110</td><td>0</td><td>52</td></tr>
+<tr data-name="Áo Choàng Lửa" data-r="Epic"><td>Áo Choàng Lửa</td><td>ao_lua</td><td>Epic</td><td>45</td><td>25</td><td>25</td></tr>
+<tr data-name="Mặt Nạ Bí Ẩn" data-r="Epic"><td>Mặt Nạ Bí Ẩn</td><td>mat_na</td><td>Epic</td><td>40</td><td>30</td><td>18</td></tr>
+<tr data-name="Kiếm Đen" data-r="Epic"><td>Kiếm Đen</td><td>kiem_den</td><td>Epic</td><td>0</td><td>65</td><td>15</td></tr>
+<tr data-name="Khiên Thép" data-r="Legendary"><td>Khiên Thép</td><td>khien_thep</td><td>Legendary</td><td>160</td><td>0</td><td>75</td></tr>
+<tr data-name="Kiếm Haki" data-r="Legendary"><td>Kiếm Haki</td><td>kiem_haki</td><td>Legendary</td><td>0</td><td>85</td><td>25</td></tr>
+<tr data-name="Thắt Lưng Haki" data-r="Legendary"><td>Thắt Lưng Haki</td><td>that_lung_haki</td><td>Legendary</td><td>90</td><td>35</td><td>35</td></tr></tbody></table></div>
+<div class="callout">Lệnh: <code>!catalog-items</code> xem danh mục • <code>!items</code> xem túi đồ và ID • <code>!equip &lt;ID tướng&gt; &lt;ID đồ&gt;</code> để gắn • <code>!unequip &lt;ID tướng&gt;</code> để tháo • <code>!upgradegear &lt;ID đồ&gt;</code> để cường hóa.</div>
+</section>
+<section id="chieumo">
+<h2>7. Chiêu mộ tướng</h2>
+<ul><li>Hỗ trợ chiêu mộ một lần hoặc mười lần: <code>!recruit 1</code> và <code>!recruit 10</code>.</li><li>Phẩm chất gồm R, SR, SSR và UR; tỷ lệ mặc định trong source lần lượt là 55%, 30%, 13% và 2%.</li><li>Nếu nhận trùng tướng, người chơi nhận 1 bản sao của chính tướng đó để dùng cho đột phá/nâng sao.</li><li>Chiêu mộ tiêu hao vé; Owner có vô hạn vé theo quyền đã chốt.</li></ul>
+<p class="muted small">Tỷ lệ chiêu mộ đang là cấu hình mặc định của bản thử nghiệm; có thể cân bằng lại trước phát hành.</p>
+</section>
+<section id="battle">
+<h2>8. Hệ thống chiến đấu</h2>
+<ul><li>Chiến đấu tự động theo lượt; thứ tự hành động dựa trên SPD.</li><li>Mỗi tướng tấn công mục tiêu còn sống có tỷ lệ HP thấp nhất; có biến thiên sát thương nhỏ.</li><li>Năng lượng tích lũy trong chiến đấu. Chỉ SSR và UR có kỹ năng đặc biệt riêng; kỹ năng kích hoạt khi đủ năng lượng.</li><li>Nhật ký chỉ tổng kết theo từng vòng, không
